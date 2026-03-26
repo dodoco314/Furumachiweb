@@ -234,6 +234,8 @@ nav button.active {
 .tag.food { background: #fff0e0; color: var(--gold); border: 1px solid #f0d090; }
 .tag.vintage { background: #e8ecff; color: var(--indigo); border: 1px solid #c0caee; }
 .tag.cafe { background: #e8f4e8; color: var(--moss); border: 1px solid #b0d4b0; }
+.tag.select { background: #cee5ff; color: var(--steelblue); border: 1px solid #7cb3ff; }
+.tag.sweets { background: #ffccef; color: var(--pink); border: 1px solid #ff95b8; }
 .tag.culture { background: #fce8e8; color: var(--vermillion); border: 1px solid #f0c0c0; }
 .tag.kamihuru { background: #e4e8bc; color: var(--yellow); border: 1px solid #fff09b; }
 .tag.town5 {background: #d7f4ff; color: var(--steelblue); border: 1px solid #7aceff; }
