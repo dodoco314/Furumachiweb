@@ -13,6 +13,7 @@ function updateProgress() {
   document.getElementById('progress-fill').style.width = pct + '%';
 }
 
+<<<<<<< HEAD
 const typeLabel = {
    food: '🍽 グルメ',
    cafe: '☕ カフェ',
@@ -21,6 +22,9 @@ const typeLabel = {
    kamihuru: '上古町', 
    town5: '５番町' 
   };
+=======
+const typeLabel = { food: '🍽 グルメ', cafe: '☕ カフェ', vintage: '👗 古着', culture: '🎭 文化', select: '🛍 セレクト', sweets: '🍫 スイーツ' };
+>>>>>>> 8f155ff72c6b5b1d0c3145a31de634b2177a3e8a
 
 // ===== お店一覧 =====
 function renderShopList() {
