@@ -1,0 +1,467 @@
+:root {
+  --ink: #1a1208;
+  --paper: #f5efe6;
+  --aged: #e8dcc8;
+  --vermillion: #c94a2a;
+  --gold: #c8973a;
+  --moss: #4a6741;
+  --indigo: #2d3a5c;
+  --stamp-size: 72px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'Noto Serif JP', serif;
+  background: var(--paper);
+  color: var(--ink);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.6;
+}
+
+/* ===== ヘッダー ===== */
+header {
+  position: relative;
+  z-index: 10;
+  padding: 24px 20px 16px;
+  border-bottom: 2px solid var(--ink);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  background: var(--paper);
+}
+
+.logo-area h1 {
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 0.1em;
+  line-height: 1.1;
+}
+
+.logo-area h1 span { color: var(--vermillion); }
+
+.logo-area p {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: #888;
+  margin-top: 4px;
+  font-family: 'DM Mono', monospace;
+}
+
+.progress-badge { text-align: right; }
+
+.progress-badge .pct {
+  font-size: 42px;
+  font-weight: 900;
+  color: var(--vermillion);
+  line-height: 1;
+  font-family: 'DM Mono', monospace;
+}
+
+.progress-badge .pct-label {
+  font-size: 10px;
+  color: #888;
+  letter-spacing: 0.15em;
+}
+
+/* ===== プログレスバー ===== */
+.progress-bar-wrap {
+  height: 6px;
+  background: var(--aged);
+  position: relative;
+  z-index: 10;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: var(--vermillion);
+  transition: width 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ===== ナビ ===== */
+nav {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  border-bottom: 1px solid var(--aged);
+  background: var(--paper);
+}
+
+nav button {
+  flex: 1;
+  padding: 14px 8px;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #888;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s;
+}
+
+nav button.active {
+  color: var(--ink);
+  border-bottom-color: var(--vermillion);
+  font-weight: 700;
+}
+
+/* ===== ビュー ===== */
+.view { display: none; position: relative; z-index: 5; }
+.view.active { display: block; }
+
+/* ===== お店一覧 ===== */
+.shop-list {
+  padding: 20px 16px;
+  display: grid;
+  gap: 12px;
+}
+
+.shop-card {
+  background: white;
+  border: 1px solid var(--aged);
+  border-radius: 4px;
+  padding: 16px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.shop-card:active { transform: scale(0.98); }
+
+.shop-card.visited { border-color: var(--moss); }
+
+.shop-card.visited::after {
+  content: '訪問済';
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 10px;
+  font-family: 'DM Mono', monospace;
+  color: var(--moss);
+  letter-spacing: 0.1em;
+  border: 1px solid var(--moss);
+  padding: 2px 6px;
+  border-radius: 2px;
+}
+
+.shop-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+  border: 1.5px solid var(--aged);
+}
+
+.shop-icon.food { background: #fff8f0; }
+.shop-icon.vintage { background: #f0f4ff; }
+
+.shop-info h3 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.shop-info p {
+  font-size: 12px;
+  color: #666;
+  line-height: 1.6;
+}
+
+.shop-info .tag {
+  display: inline-block;
+  font-size: 10px;
+  font-family: 'DM Mono', monospace;
+  letter-spacing: 0.08em;
+  padding: 2px 8px;
+  border-radius: 20px;
+  margin-top: 6px;
+  margin-right: 4px;
+}
+
+.tag.food { background: #fff0e0; color: var(--gold); border: 1px solid #f0d090; }
+.tag.vintage { background: #e8ecff; color: var(--indigo); border: 1px solid #c0caee; }
+
+/* ===== 地図 ===== */
+#map {
+  width: 100%;
+  height: calc(100vh - 160px);
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 4px;
+  font-family: 'Noto Serif JP', serif;
+}
+
+/* ===== スタンプ積み上げ ===== */
+.stamp-view {
+  padding: 20px 16px;
+  min-height: calc(100vh - 160px);
+}
+
+.stamp-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.stamp-header h2 {
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.stamp-header p {
+  font-size: 12px;
+  color: #888;
+  margin-top: 4px;
+}
+
+.stamp-tower {
+  position: relative;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 4px;
+  padding-bottom: 60px;
+}
+
+.stamp-ground {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 240px;
+  height: 24px;
+  background: var(--ink);
+  border-radius: 2px;
+}
+
+.stamp-item {
+  width: var(--stamp-size);
+  height: var(--stamp-size);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  border: 3px solid var(--ink);
+  animation: dropIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 4px 0 rgba(0,0,0,0.15);
+}
+
+.stamp-item.food { background: #ffe8c8; }
+.stamp-item.vintage { background: #dce4ff; }
+
+.stamp-item .stamp-name {
+  position: absolute;
+  bottom: -20px;
+  font-size: 9px;
+  white-space: nowrap;
+  color: #666;
+  letter-spacing: 0.05em;
+}
+
+@keyframes dropIn {
+  from {
+    transform: translateY(-120px) scale(1.2);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(8px) scale(0.95);
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.stamp-empty {
+  text-align: center;
+  color: #bbb;
+  font-size: 13px;
+  padding: 40px 0;
+  letter-spacing: 0.1em;
+}
+
+/* ===== ボタン ===== */
+.share-area {
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.btn {
+  padding: 14px 24px;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 2px solid var(--ink);
+  font-weight: 700;
+  transition: all 0.15s;
+}
+
+.btn-primary { background: var(--ink); color: var(--paper); }
+.btn-secondary { background: transparent; color: var(--ink); }
+.btn:active { transform: scale(0.97); }
+
+/* ===== QRフローティングボタン ===== */
+.fab {
+  position: fixed;
+  bottom: 28px;
+  right: 20px;
+  z-index: 100;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--vermillion);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  box-shadow: 0 4px 16px rgba(201,74,42,0.35);
+  transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.fab:active {
+  transform: scale(0.93);
+  box-shadow: 0 2px 8px rgba(201,74,42,0.35);
+}
+
+/* ===== モーダル ===== */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(26,18,8,0.7);
+  z-index: 200;
+  align-items: flex-end;
+}
+
+.modal-overlay.show { display: flex; }
+
+.modal {
+  background: var(--paper);
+  width: 100%;
+  border-radius: 16px 16px 0 0;
+  padding: 24px 20px 40px;
+  animation: slideUp 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+.modal h2 {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  background: none;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: #888;
+}
+
+/* ===== お店詳細 ===== */
+.shop-detail-icon {
+  font-size: 48px;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.shop-detail-name {
+  font-size: 20px;
+  font-weight: 900;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.shop-detail-desc {
+  font-size: 13px;
+  line-height: 1.8;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+.shop-detail-info {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.info-row {
+  display: flex;
+  gap: 12px;
+  font-size: 13px;
+}
+
+.info-row .label {
+  color: #888;
+  width: 56px;
+  flex-shrink: 0;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  padding-top: 1px;
+}
+
+/* ===== QRスキャン結果 ===== */
+#qr-reader {
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  border: 2px solid var(--ink);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.qr-result {
+  margin-top: 16px;
+  padding: 16px;
+  background: white;
+  border: 1px solid var(--aged);
+  border-radius: 4px;
+  text-align: center;
+  display: none;
+}
+
+.qr-result.show { display: block; }
+.qr-result.success { border-color: var(--moss); }
+.qr-result.already { border-color: var(--gold); }
+.qr-result h3 { font-size: 15px; margin-bottom: 8px; }
+.qr-result p { font-size: 13px; color: #666; }

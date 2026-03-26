@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>古町ひとめぐり</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<link rel="stylesheet" href="style.css">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+</head>
+<body>
+
+<header>
+  <div class="logo-area">
+    <h1>古町<span>ひとめぐり</span></h1>
+    <p>FURUMACHI WALK</p>
+  </div>
+  <div class="progress-badge">
+    <div class="pct" id="pct-display">0%</div>
+    <div class="pct-label">VISITED</div>
+  </div>
+</header>
+<div class="progress-bar-wrap">
+  <div class="progress-bar-fill" id="progress-fill" style="width:0%"></div>
+</div>
+
+<nav>
+  <button class="active" onclick="switchTab('list', this)">🏠 お店</button>
+  <button onclick="switchTab('map', this)">🗺 地図</button>
+  <button onclick="switchTab('stamp', this)">🎯 記録</button>
+</nav>
+
+<!-- お店一覧 -->
+<div id="view-list" class="view active">
+  <div class="shop-list" id="shop-list-container"></div>
+</div>
+
+<!-- 地図 -->
+<div id="view-map" class="view">
+  <div id="map"></div>
+</div>
+
+<!-- スタンプ積み上げ -->
+<div id="view-stamp" class="view stamp-view">
+  <div class="stamp-header">
+    <h2>あなたの古町</h2>
+    <p>QRコードを読み取って記録を積み上げよう</p>
+  </div>
+  <div class="stamp-tower" id="stamp-tower">
+    <div class="stamp-ground"></div>
+    <div class="stamp-empty" id="stamp-empty">まだ訪問記録がありません</div>
+  </div>
+  <div class="share-area" id="share-area" style="display:none">
+    <button class="btn btn-primary" onclick="shareProgress()">📤 シェアする</button>
+    <button class="btn btn-secondary" onclick="resetProgress()">リセット</button>
+  </div>
+</div>
+
+<!-- QRスキャンボタン -->
+<button class="fab" onclick="openQR()" title="QRコードを読み取る">📷</button>
+
+<!-- QRモーダル -->
+<div class="modal-overlay" id="qr-modal">
+  <div class="modal" style="position:relative">
+    <button class="modal-close" onclick="closeQR()">✕</button>
+    <h2>QRコードを読み取る</h2>
+    <div id="qr-reader"></div>
+    <div class="qr-result" id="qr-result"></div>
+  </div>
+</div>
+
+<!-- お店詳細モーダル -->
+<div class="modal-overlay" id="shop-modal">
+  <div class="modal" style="position:relative">
+    <button class="modal-close" onclick="closeShopModal()">✕</button>
+    <div id="shop-modal-content"></div>
+  </div>
+</div>
+
+<script src="shops.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
