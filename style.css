@@ -128,7 +128,7 @@ nav button.active {
   gap: 12px;
 }
 
-#shop-list-container {
+.shop-list-container {
   display: grid;
   /*grid-template-columns: repeat(2, 512px); /* 横2列 */
   /*grid-template-rows: repeat(2, 512px);   /* 縦2行 */
