@@ -13,7 +13,14 @@ function updateProgress() {
   document.getElementById('progress-fill').style.width = pct + '%';
 }
 
-const typeLabel = { food: '🍽 グルメ', cafe: '☕ カフェ', vintage: '👗 古着', culture: '🎭 文化' };
+const typeLabel = {
+   food: '🍽 グルメ',
+   cafe: '☕ カフェ',
+   vintage: '👗 古着', 
+   culture: '🎭 文化', 
+   kamihuru: '上古町', 
+   town5: '５番町' 
+  };
 
 // ===== お店一覧 =====
 function renderShopList() {
@@ -34,7 +41,7 @@ function renderShopList() {
       <div class="shop-info">
         <h3>${shop.name}</h3>
         <p>${shop.desc.substring(0, 40)}…</p>
-        <span class="tag ${shop.type}">${typeLabel[shop.type] || shop.type}</span>
+        <span class="tag ${shop.types}">${typeLabel[shop.types] || shop.types}</span>
       </div>
     </div>
   `).join('');

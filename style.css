@@ -128,8 +128,19 @@ nav button.active {
   gap: 12px;
 }
 
+#shop-list-container {
+  display: grid;
+  /*grid-template-columns: repeat(2, 512px); /* 横2列 */
+  /*grid-template-rows: repeat(2, 512px);   /* 縦2行 */
+  column-count: 2;
+  column-gap: 20px;
+  gap: 20px;
+}
+
 .shop-card {
   background: white;
+  width: auto;
+  height: auto;
   border: 1px solid var(--aged);
   border-radius: 4px;
   padding: 16px;
@@ -160,8 +171,8 @@ nav button.active {
 }
 
 .shop-card-image {
-  width: 64px;
-  height: 64px;
+  width: 256px;
+  height: auto;
   border-radius: 8px;
   overflow: hidden;
   flex-shrink: 0;
@@ -197,21 +208,21 @@ nav button.active {
 .shop-icon.food { background: #fff8f0; }
 .shop-icon.vintage { background: #f0f4ff; }
 
-.shop-info h3 {
-  font-size: 15px;
-  font-weight: 700;
-  margin-bottom: 4px;
+.shop-info h1 {
+  font-size: 40px;
+  font-weight: 800;
+  margin-bottom: auto;
 }
 
 .shop-info p {
-  font-size: 12px;
+  font-size: 15px;
   color: #666;
   line-height: 1.6;
 }
 
 .shop-info .tag {
   display: inline-block;
-  font-size: 10px;
+  font-size: 15px;
   font-family: 'DM Mono', monospace;
   letter-spacing: 0.08em;
   padding: 2px 8px;
@@ -224,6 +235,9 @@ nav button.active {
 .tag.vintage { background: #e8ecff; color: var(--indigo); border: 1px solid #c0caee; }
 .tag.cafe { background: #e8f4e8; color: var(--moss); border: 1px solid #b0d4b0; }
 .tag.culture { background: #fce8e8; color: var(--vermillion); border: 1px solid #f0c0c0; }
+.tag.kamihuru { background: #e4e8bc; color: var(--yellow); border: 1px solid #fff09b; }
+.tag.town5 {background: #d7f4ff; color: var(--steelblue); border: 1px solid #7aceff; }
+
 
 /* ===== 地図 ===== */
 #map {
