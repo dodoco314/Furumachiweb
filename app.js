@@ -13,7 +13,7 @@ function updateProgress() {
   document.getElementById('progress-fill').style.width = pct + '%';
 }
 
-const typeLabel = { food: '🍽 グルメ', cafe: '☕ カフェ', vintage: '👗 古着', culture: '🎭 文化' };
+const typeLabel = { food: '🍽 グルメ', cafe: '☕ カフェ', vintage: '👗 古着', culture: '🎭 文化', select: '🛍 セレクト', sweets: '🍫 スイーツ' };
 
 // ===== お店一覧 =====
 function renderShopList() {
