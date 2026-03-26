@@ -14,8 +14,8 @@ function updateProgress() {
 }
 
 const typeLabel = { food: '🍽 グルメ', cafe: '☕ カフェ', vintage: '👗 古着', culture: '🎭 文化', select: '🛍 セレクト', sweets: '🍫 スイーツ',
-  place5:'古町通5番町',
- };
+  place2:'📍 古町通2番町', place3:'📍 古町通3番町', place4:'📍 古町通4番町', place5:'📍 古町通5番町', place6:'📍 古町通6番町', placeN:'📍 人情横丁', placeI:'📍 一番堀通町'
+};
 
 // ===== お店一覧 =====
 function renderShopList() {

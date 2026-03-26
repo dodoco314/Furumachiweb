@@ -2,7 +2,7 @@ const shops = [
   {
     id: 'shop_001',
     name: 'はり糸',
-    type: ['food','place5'],
+    type: ['food', 'place5'],
     icon: '🍰',
     image: 'images/hariito.jpg',
     desc: '明治6年創業、新潟で初めてカステラを焼いた老舗菓子屋。卵をたっぷり使った「カステラ四姉妹」が看板商品。地酒カステラなど季節限定品も。',
@@ -16,7 +16,7 @@ const shops = [
   {
     id: 'shop_002',
     name: '珈琲館シャモニー',
-    type: ['cafe','place5'],
+    type: ['cafe', 'place5'],
     icon: '☕',
     image: "images/chamonixCF.jpg",
     desc: '古町アーケード5番町にある老舗コーヒー専門店。ヴェルベットのソファとウッディな内装が落ち着く空間。バルコニー席から古町の通りを眺めながら一杯。',
@@ -30,7 +30,7 @@ const shops = [
   {
     id: 'shop_003',
     name: 'エキゾチックアニマルカフェ Ricky',
-    type: 'cafe',
+    type: ['cafe', 'place5'],
     icon: '🦎',
     image: 'images/animalCF.jpg',
     desc: '犬・猫・うさぎ・ハムスター・爬虫類まで様々な動物と触れ合えるカフェ。古町アーケード5番町のビル2階にある穴場スポット。',
@@ -44,7 +44,7 @@ const shops = [
   {
     id: 'shop_004',
     name: 'Crêperie Le Pont Marie',
-    type: 'cafe',
+    type: ['cafe', 'place4'],
     icon: '🥞',
     image: 'images/crepe.jpg',
     desc: '古町4番町にあるクレープ専門店。バナナヌテラやランチセットが人気。店内はおしゃれな空間で、テイクアウトも可能。',
@@ -58,7 +58,7 @@ const shops = [
   {
     id: 'shop_005',
     name: 'THIS MAN vintage clothing',
-    type: 'vintage',
+    type: ['vintage', 'place4'],
     icon: '👗',
     image: 'images/vintage.jpg',
     desc: '古町4番町のヴィンテージ古着店。ローリング・ストーンズやピンク・フロイドのバンドTシャツなどアメリカ買い付けのアイテムが充実。スタッフの知識が深い。',
@@ -72,7 +72,7 @@ const shops = [
   {
     id: 'shop_006',
     name: '古町演芸場',
-    type: 'culture',
+    type: ['culture', 'place6'],
     icon: '🎭',
     image: 'images/theater.jpg',
     desc: '毎月異なる劇団が出演する大衆演劇の小屋。入場料のみで観覧でき、日替わりのショーが楽しめる。畳席と椅子席があり、日本語が分からなくても楽しめると外国人観光客にも好評。',
@@ -86,7 +86,7 @@ const shops = [
   {
     id: 'shop_007',
     name: 'サバイジャイ・タイランド',
-    type: 'food',
+    type: ['food', 'placeN'],
     icon: '🍛',
     image: 'images/tai.jpg',
     desc: '人情横丁に移転した本格タイ料理店。ガパオやカレーが絶品で、スパイス好きには堪らない一軒。昭和の横丁の雰囲気の中で本場の味を提供。支払いは現金のみ。',
@@ -96,12 +96,11 @@ const shops = [
     lat: 37.92201,
     lng: 139.04058,
     tip: 'ガパオとカレーが特におすすめ。辛さ調整可。現金のみ。※移転後の新住所'
-  }
-,
+  },
   {
     id: 'shop_008',
     name: 'オーベルジュ古町',
-    type: 'food',
+    type: ['food', 'place2'],
     icon: '🍽',
     image: 'images/auberge.jpg',
     desc: '1987年創業の老舗フレンチレストラン。新潟の食材を活かしたフルコースがリーズナブルに楽しめる。ランチ3,000円からとコスパ抜群。格式ある空間で本格フレンチを体験できる穴場。',
@@ -115,7 +114,7 @@ const shops = [
   {
     id: 'shop_009',
     name: 'Intention Line.',
-    type: 'vintage',
+    type: ['vintage', 'place5'],
     icon: '🧥',
     image: 'images/Intentionkime.jpg',
     desc: '古町5番町にあるセレクト系古着・ブランド古着店。futurなどのレアブランドを取り扱う。白い外観とネオンサインが目印のオシャレな外観。',
@@ -129,7 +128,7 @@ const shops = [
   {
     id: 'shop_010',
     name: 'INTENTION',
-    type: 'vintage',
+    type: ['vintage', 'place5'],
     icon: '👔',
     image: 'images/INTENTION.jpg',
     desc: '古町5番町のガラス張りのスタイリッシュな古着・セレクトショップ。2フロア構成で1階はINTENTION、2階はby Intentionとして展開。メンズ中心でセレクトの質が高い。',
@@ -143,7 +142,7 @@ const shops = [
   {
     id: 'shop_011',
     name: '古町ペンギン商店',
-    type: 'food',
+    type: ['food', 'placeI'],
     icon: '🍱',
     image: 'images/pengin.jpg',
     desc: '白山神社近くにある豚汁・もつ豚汁専門の食堂＆カフェ。県産食材にこだわった体が温まる一杯が名物。クリームソーダやオムライスなど昭和レトロなメニューも揃う。',
@@ -157,7 +156,7 @@ const shops = [
   {
     id: 'shop_012',
     name: 'Flagran',
-    type: 'select',
+    type: ['select', 'place4'],
     icon: '👒',
     image: 'images/Flagran.jpg',
     desc: '古町4番町にある女性向けセレクトショップ。一点ものアイテムやハンドメイドアクセサリーが豊富で、個性的なスタイルを楽しみたい人にぴったり。店主のセンスが光る空間。',
@@ -171,7 +170,7 @@ const shops = [
   {
     id: 'shop_013',
     name: '上古町の百年長屋 SAN',
-    type: 'cafe',
+    type: ['cafe', 'place3'],
     icon: '🏮',
     image: 'images/san.jpg',
     desc: '築100年の古民家を活用した複合スペース。カフェ・地元本・シェアサイクル・授乳室・ワーキングスペースを備えた古町の拠点。フォーや星のソフトクリームが人気。',
@@ -185,7 +184,7 @@ const shops = [
   {
     id: 'shop_014',
     name: 'QUON CHOCOLATE 新潟',
-    type: 'sweets',
+    type: ['sweets', 'place3'],
     icon: '🍫',
     image: 'images/chocolate.jpg',
     desc: 'フェアトレードカカオにこだわる新潟発のチョコレート専門店。ほうじ茶・村上茶など新潟らしいフレーバーが揃う。試食も豊富でお土産にも最適。夏はチョコアイスも。',
