@@ -199,6 +199,8 @@ nav button.active {
 
 .tag.food { background: #fff0e0; color: var(--gold); border: 1px solid #f0d090; }
 .tag.vintage { background: #e8ecff; color: var(--indigo); border: 1px solid #c0caee; }
+.tag.cafe { background: #e8f4e8; color: var(--moss); border: 1px solid #b0d4b0; }
+.tag.culture { background: #fce8e8; color: var(--vermillion); border: 1px solid #f0c0c0; }
 
 /* ===== 地図 ===== */
 #map {
@@ -398,10 +400,39 @@ nav button.active {
 }
 
 /* ===== お店詳細 ===== */
-.shop-detail-icon {
+.shop-detail-image {
+  width: 100%;
+  height: 200px;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  border: 1px solid var(--aged);
+}
+
+.shop-detail-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.shop-detail-image--empty {
+  background: var(--aged);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.shop-detail-image--empty span {
   font-size: 48px;
-  text-align: center;
-  margin-bottom: 12px;
+}
+
+.shop-detail-image--empty small {
+  font-size: 11px;
+  color: #999;
+  letter-spacing: 0.1em;
+  font-family: 'DM Mono', monospace;
 }
 
 .shop-detail-name {

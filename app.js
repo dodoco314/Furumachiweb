@@ -13,6 +13,8 @@ function updateProgress() {
   document.getElementById('progress-fill').style.width = pct + '%';
 }
 
+const typeLabel = { food: '🍽 グルメ', cafe: '☕ カフェ', vintage: '👗 古着', culture: '🎭 文化' };
+
 // ===== お店一覧 =====
 function renderShopList() {
   const container = document.getElementById('shop-list-container');
@@ -22,7 +24,7 @@ function renderShopList() {
       <div class="shop-info">
         <h3>${shop.name}</h3>
         <p>${shop.desc.substring(0, 40)}…</p>
-        <span class="tag ${shop.type}">${shop.type === 'food' ? '🍽 グルメ' : '👗 古着'}</span>
+        <span class="tag ${shop.type}">${typeLabel[shop.type] || shop.type}</span>
       </div>
     </div>
   `).join('');
@@ -156,11 +158,15 @@ function openShopModal(shopId) {
   if (!shop) return;
   const isVisited = visited.includes(shopId);
 
+  const imageHTML = shop.image
+    ? `<div class="shop-detail-image"><img src="${shop.image}" alt="${shop.name}"></div>`
+    : `<div class="shop-detail-image shop-detail-image--empty"><span>${shop.icon}</span><small>画像準備中</small></div>`;
+
   document.getElementById('shop-modal-content').innerHTML = `
-    <div class="shop-detail-icon">${shop.icon}</div>
+    ${imageHTML}
     <div class="shop-detail-name">${shop.name}</div>
     <span class="tag ${shop.type}" style="display:block;text-align:center;margin-bottom:16px">
-      ${shop.type === 'food' ? '🍽 グルメ' : '👗 古着'}
+      ${typeLabel[shop.type] || shop.type}
     </span>
     <p class="shop-detail-desc">${shop.desc}</p>
     <div class="shop-detail-info">
