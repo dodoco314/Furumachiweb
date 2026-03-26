@@ -237,6 +237,7 @@ nav button.active {
 .tag.culture { background: #fce8e8; color: var(--vermillion); border: 1px solid #f0c0c0; }
 .tag.kamihuru { background: #e4e8bc; color: var(--yellow); border: 1px solid #fff09b; }
 .tag.town5 {background: #d7f4ff; color: var(--steelblue); border: 1px solid #7aceff; }
+.tag[class*="place"] { background: #e8f0e0; color: #3a6a2a; }
 
 
 /* ===== 地図 ===== */

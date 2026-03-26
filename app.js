@@ -13,14 +13,9 @@ function updateProgress() {
   document.getElementById('progress-fill').style.width = pct + '%';
 }
 
-const typeLabel = {
-   food: '🍽 グルメ',
-   cafe: '☕ カフェ',
-   vintage: '👗 古着', 
-   culture: '🎭 文化', 
-   kamihuru: '上古町', 
-   town5: '５番町' 
-  };
+const typeLabel = { food: '🍽 グルメ', cafe: '☕ カフェ', vintage: '👗 古着', culture: '🎭 文化', select: '🛍 セレクト', sweets: '🍫 スイーツ',
+  place5:'古町通5番町',
+ };
 
 // ===== お店一覧 =====
 function renderShopList() {
@@ -41,7 +36,7 @@ function renderShopList() {
       <div class="shop-info">
         <h3>${shop.name}</h3>
         <p>${shop.desc.substring(0, 40)}…</p>
-        <span class="tag ${shop.types}">${typeLabel[shop.types] || shop.types}</span>
+        ${(Array.isArray(shop.type) ? shop.type : [shop.type]).map(t => `<span class="tag ${t}">${typeLabel[t] || t}</span>`).join('')}
       </div>
     </div>
   `).join('');
@@ -99,7 +94,8 @@ function renderStamps() {
     const shop = shops.find(s => s.id === id);
     if (!shop) return;
     const el = document.createElement('div');
-    el.className = `stamp-item ${shop.type}`;
+    const types = Array.isArray(shop.type) ? shop.type : [shop.type];
+    el.className = `stamp-item ${types[0]}`;
     el.style.animationDelay = `${i * 0.08}s`;
     el.innerHTML = `${shop.icon}<span class="stamp-name">${shop.name.substring(0, 6)}</span>`;
     tower.insertBefore(el, tower.querySelector('.stamp-ground').nextSibling);
@@ -182,9 +178,9 @@ function openShopModal(shopId) {
   document.getElementById('shop-modal-content').innerHTML = `
     ${imageHTML}
     <div class="shop-detail-name">${shop.name}</div>
-    <span class="tag ${shop.type}" style="display:block;text-align:center;margin-bottom:16px">
-      ${typeLabel[shop.type] || shop.type}
-    </span>
+    <div style="text-align:center;margin-bottom:16px">
+      ${(Array.isArray(shop.type) ? shop.type : [shop.type]).map(t => `<span class="tag ${t}">${typeLabel[t] || t}</span>`).join(' ')}
+    </div>
     <p class="shop-detail-desc">${shop.desc}</p>
     <div class="shop-detail-info">
       <div class="info-row"><span class="label">住所</span><span>${shop.address}</span></div>
