@@ -18,9 +18,19 @@ const typeLabel = { food: '🍽 グルメ', cafe: '☕ カフェ', vintage: '�
 // ===== お店一覧 =====
 function renderShopList() {
   const container = document.getElementById('shop-list-container');
-  container.innerHTML = shops.map(shop => `
+  const sorted = [...shops].sort((a, b) => {
+    const aVisited = visited.includes(a.id) ? 1 : 0;
+    const bVisited = visited.includes(b.id) ? 1 : 0;
+    return aVisited - bVisited;
+  });
+  container.innerHTML = sorted.map(shop => `
     <div class="shop-card ${visited.includes(shop.id) ? 'visited' : ''}" onclick="openShopModal('${shop.id}')">
-      <div class="shop-icon ${shop.type}">${shop.icon}</div>
+      <div class="shop-card-image ${shop.image ? '' : 'shop-card-image--empty'}">
+        ${shop.image
+          ? `<img src="${shop.image}" alt="${shop.name}">`
+          : `<span>${shop.icon}</span>`
+        }
+      </div>
       <div class="shop-info">
         <h3>${shop.name}</h3>
         <p>${shop.desc.substring(0, 40)}…</p>
